@@ -1,0 +1,20 @@
+name: VoidTech
+version: 1.0
+main: com.example.voidtech.VoidTech
+api-version: 1.20
+
+commands:
+  tech:
+    description: 科技系統主指令（僅限管理員）
+    usage: /tech
+    permission: voidtech.admin
+    permission-message: "§c[系統] 你沒有權限使用此指令！"
+  ftech:
+    description: 科技系統管理指令（僅限管理員）
+    usage: /ftech
+    permission: voidtech.admin
+    permission-message: "§c[系統] 你沒有權限使用此指令！"
+
+permissions:
+  voidtech.admin:
+    default: op

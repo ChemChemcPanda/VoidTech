@@ -1,0 +1,4 @@
+settings:
+  database: sqlite  # 可選 mysql
+  tp_max_storage: 50
+  ftp_max_storage: 100
