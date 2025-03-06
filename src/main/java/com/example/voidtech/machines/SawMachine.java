@@ -60,19 +60,11 @@ public class SawMachine implements Listener {
         return false;
     }
 
-    // 使用插件的 logger
-    public static void logInfo(String message) {
-        if (plugin != null) {
-            plugin.getLogger().info(message);
-        } else {
-            System.out.println("Plugin instance is null!");
-        }
-    }
-
     // 放置鋸木台時，設置NBT標籤
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        logInfo("onBlockPlace 事件被觸發！");
+        // 測試輸出：檢查事件是否觸發
+        System.out.println("onBlockPlace 事件被觸發！");
 
         Block block = event.getBlockPlaced();
         ItemStack itemInHand = event.getItemInHand();
@@ -83,24 +75,22 @@ public class SawMachine implements Listener {
             if (state instanceof TileState) {
                 TileState tileState = (TileState) state;
                 PersistentDataContainer container = tileState.getPersistentDataContainer();
-                UUID uuid = UUID.randomUUID(); // 創建唯一的UUID
-                container.set(new NamespacedKey("voidtech", SAW_TABLE_KEY), PersistentDataType.STRING, uuid.toString());
+                container.set(new NamespacedKey("voidtech", SAW_TABLE_KEY), PersistentDataType.STRING, "true");
 
-                // 強制更新TileState資料
+                // 強制更新 TileState 資料
                 tileState.update();
 
                 // 訊息：檢查是否儲存了NBT資料
-                logInfo("鋸木台已經放置，並成功儲存UUID資料！UUID: " + uuid);
+                System.out.println("鋸木台已經放置，並成功儲存NBT資料！");
             }
-        } else {
-            logInfo("放置的物品不是鋸木台，物品名稱: " + itemInHand.getType());
         }
     }
 
     // 破壞鋸木台時，處理掉落物品與NBT標籤
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        logInfo("onBlockBreak 事件被觸發，破壞的方塊: " + event.getBlock().getType());
+        // 測試輸出：檢查破壞的方塊
+        System.out.println("onBlockBreak 事件被觸發，破壞的方塊: " + event.getBlock().getType());
 
         Block block = event.getBlock();
 
@@ -113,7 +103,7 @@ public class SawMachine implements Listener {
             if (container.has(key, PersistentDataType.STRING)) {
                 event.setDropItems(false);  // 禁止掉落普通方塊
                 block.getWorld().dropItemNaturally(block.getLocation(), createSawMachine());  // 丟出鋸木台
-                logInfo("鋸木台已經被破壞，並且正確丟出鋸木台！");  // 顯示破壞訊息
+                System.out.println("鋸木台已經被破壞，並且正確丟出鋸木台！");  // 顯示破壞訊息
             }
         }
     }
