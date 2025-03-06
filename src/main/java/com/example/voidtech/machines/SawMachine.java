@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static org.bukkit.Bukkit.getLogger;
+
 public class SawMachine implements Listener {
 
     private static final String SAW_TABLE_KEY = "saw_table_key";  // 鋸木台的唯一標籤
@@ -64,7 +66,7 @@ public class SawMachine implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         // 測試輸出：檢查事件是否觸發
-        System.out.println("onBlockPlace 事件被觸發！");
+        getLogger().info("onBlockPlace 事件被觸發！");
 
         Block block = event.getBlockPlaced();
         ItemStack itemInHand = event.getItemInHand();
@@ -81,11 +83,11 @@ public class SawMachine implements Listener {
                 tileState.update();
 
                 // 訊息：檢查是否儲存了NBT資料
-                System.out.println("鋸木台已經放置，並成功儲存NBT資料！");
+                getLogger().info("鋸木台已經放置，並成功儲存NBT資料！");
             }
         } else {
             // 訊息：顯示放置的物品是否為鋸木台
-            System.out.println("放置的物品不是鋸木台，物品名稱: " + itemInHand.getType());
+            getLogger().info("放置的物品不是鋸木台，物品名稱: " + itemInHand.getType());
         }
     }
 
@@ -93,7 +95,7 @@ public class SawMachine implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         // 測試輸出：檢查破壞的方塊
-        System.out.println("onBlockBreak 事件被觸發，破壞的方塊: " + event.getBlock().getType());
+        getLogger().info("onBlockBreak 事件被觸發，破壞的方塊: " + event.getBlock().getType());
 
         Block block = event.getBlock();
 
@@ -106,7 +108,7 @@ public class SawMachine implements Listener {
             if (container.has(key, PersistentDataType.STRING)) {
                 event.setDropItems(false);  // 禁止掉落普通方塊
                 block.getWorld().dropItemNaturally(block.getLocation(), createSawMachine());  // 丟出鋸木台
-                System.out.println("鋸木台已經被破壞，並且正確丟出鋸木台！");  // 顯示破壞訊息
+                getLogger().info("鋸木台已經被破壞，並且正確丟出鋸木台！");  // 顯示破壞訊息
             }
         }
     }
