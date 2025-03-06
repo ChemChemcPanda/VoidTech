@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.taichucore</groupId>
+  <artifactId>VoidTech</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>VoidTech</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
+
+
+  <repositories>
+    <repository>
+      <id>papermc-repo</id>
+      <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!-- Paper API -->
+    <dependency>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.21.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mojang</groupId>
+      <artifactId>brigadier</artifactId>
+      <version>1.0.18</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mojang</groupId>
+      <artifactId>authlib</artifactId>
+      <version>1.5.25</version>  <!-- 或其他適用版本 -->
+    </dependency>
+
+    <dependency>
+      <groupId>com.mojang</groupId>
+      <artifactId>authlib</artifactId>
+      <version>1.5.25</version>
+      <scope>provided</scope>  <!-- 讓 Spigot 伺服器提供這個庫 -->
+    </dependency>
+
+    <!-- BungeeCord Chat API (聊天系統) -->
+    <dependency>
+      <groupId>net.md-5</groupId>
+      <artifactId>bungeecord-chat</artifactId>
+      <version>1.20-R0.2</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JUnit 測試 (可選) -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mojang</groupId>
+      <artifactId>authlib</artifactId>
+      <version>6.0.57</version>
+    </dependency>
+  </dependencies>
+</project>
