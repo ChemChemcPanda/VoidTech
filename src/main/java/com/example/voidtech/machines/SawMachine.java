@@ -83,6 +83,9 @@ public class SawMachine implements Listener {
                 // 訊息：檢查是否儲存了NBT資料
                 System.out.println("鋸木台已經放置，並成功儲存NBT資料！");
             }
+        } else {
+            // 訊息：顯示放置的物品是否為鋸木台
+            System.out.println("放置的物品不是鋸木台，物品名稱: " + itemInHand.getType());
         }
     }
 
